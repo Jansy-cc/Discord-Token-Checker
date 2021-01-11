@@ -14,7 +14,6 @@ def variant2(token):
 
 def variant2_Status(token):
     response = post(f'https://discord.com/api/v6/invite/{randint(1,9999999)}', headers={'Authorization': token})
-    print(response.content)
     if response.status_code == 401:
         return 'Invalid'
     elif "You need to verify your account in order to perform this action." in str(response.content):
@@ -34,7 +33,7 @@ if __name__ == "__main__":
                     print(f'Token: {token} is Invalid')
         if len(checked) > 0:
             save = input(f'{len(checked)} valid tokens\nSave to File (y/n)').lower()
-            if save == 'y' and len(checked):
+            if save == 'y':
                 name = randint(100000000, 9999999999)
                 with open(f'{name}.txt', 'w') as saveFile:
                     saveFile.write('\n'.join(checked))
